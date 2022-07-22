@@ -8,6 +8,7 @@ import { toRefs, computed } from "vue";
 import { mapActions } from "pinia";
 import { useTodoStore } from "./../store/todoStore";
 import { useCounterStore } from "./../store/useStore";
+
 export default {
   name: "Test",
   setup: () => {
