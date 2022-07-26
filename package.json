@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --fix --ext  src/**/*.{js,jsx,ts,vue} ",
+    "lint": "eslint --fix --ext  .vue,.js,.ts,.jsx,.tsx,.md,.json  src ",
     "prepare": "husky install"
   },
   "dependencies": {
