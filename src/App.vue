@@ -1,12 +1,13 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld1.vue";
 import Test from "./components/Test.vue";
 import { useCounterStore } from "./store/useStore.js";
 import { useTodoStore } from "./store/todoStore";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
+import { reactive } from "vue";
+// import {,onMounted ,getCurrentInstance} from 'vue'
+import { useRoute, useRouter } from "vue-router";
 
 const counter = useCounterStore();
 const todo = useTodoStore();
@@ -25,8 +26,18 @@ todo.$subscribe(
   },
   { detached: true }
 );
+const list = reactive([{ title: "猎头" }]);
 // 此订阅将在组件卸载后保留
 // someStore.$onAction(callback, true)
+// 获取当前路由
+const route = useRoute();
+// 获取路由实例
+const router = useRouter();
+console.log(route, route.params, "route", router);
+// onMounted(()=>{
+//   const instance = getCurrentInstance()
+//   console.log(instance,instance.$router,'router')
+// })
 </script>
 
 <template>
@@ -37,6 +48,22 @@ todo.$subscribe(
   <div v-for="item in todo.list" :key="item.value">{{ item.name }}</div>
   <el-button type="info">Info</el-button>
   <Test />
+  <el-table :data="list">
+    <el-table-column label="设置头部" prop="title">
+      <template #header="header">
+        <span>{{ header.column.label }}</span>
+        <el-tooltip
+          class="box-item"
+          effect="dark"
+          content="Top Center prompts info"
+          placement="top"
+        >
+          <el-icon><WarningFilled /></el-icon>
+        </el-tooltip>
+      </template>
+    </el-table-column>
+  </el-table>
+  <router-view></router-view>
 </template>
 
 <style>
