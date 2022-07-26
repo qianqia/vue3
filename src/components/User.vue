@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import {toRefs,toRef,toRaw} from "vue";
+import {toRefs,ToRef} from "vue";
 import {useRoute} from 'vue-router';
 const route=useRoute();
 </script>
