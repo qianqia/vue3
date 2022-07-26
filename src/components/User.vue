@@ -1,13 +1,16 @@
 <template>
-    <div>{{route.params.id}}</div>
+  <div>{{ route.params.id }}</div>
 </template>
 
-<script setup>
-import {toRefs,ToRef} from "vue";
-import {useRoute} from 'vue-router';
-const route=useRoute();
+<script>
+export default {
+  name: "User-Page",
+  setup: () => {
+    import { useRoute } from "vue-router";
+    const route = useRoute();
+    return { route };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
