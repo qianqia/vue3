@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed,toRefs } from "vue";
 import { mapActions } from "pinia";
 import { useTodoStore } from "./../store/todoStore";
 import { useCounterStore } from "./../store/useStore";
